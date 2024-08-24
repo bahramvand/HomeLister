@@ -1,12 +1,32 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$HNT/SX9LEJvkMJ6yNEKTi.w0oS15fcFLBrPz75Y4zp8uUM91Ieay2",
+      "id": 1
+    }
+  ],
   "ads": [
     {
       "id": 1,
       "userId": 1,
-      "location": { "lat": 35.6892, "lng": 51.389 },
+      "location": {
+        "lat": 35.6892,
+        "lng": 51.389
+      },
       "address": "Tehran, Iran",
       "description": "A nice apartment in Tehran",
+      "phone": "09121234567"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "location": {
+        "lat": 35.6892,
+        "lng": 51.389
+      },
+      "address": "Lorestan, Iran",
+      "description": "A nice apartment in Lorestan",
       "phone": "09121234567"
     }
   ]
