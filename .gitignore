@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+.vscode/
+.DS_Store
+
+# Frontend Build output
+frontend/dist/
+frontend/build/
+
+# Backend Build output
+backend/dist/
+backend/build/
+
+# Coverage directory used by testing tools
+frontend/coverage/
+backend/coverage/
+
+# Environment variables
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+backend/.env
+backend/.env.local
+backend/.env.*.local
+
+# Log files
+*.log
+
+# IDE/Editor specific files
+.idea/
+*.iml
+
+# macOS specific files
+*.DS_Store
