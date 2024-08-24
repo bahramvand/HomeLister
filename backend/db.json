@@ -1,0 +1,13 @@
+{
+  "users": [],
+  "ads": [
+    {
+      "id": 1,
+      "userId": 1,
+      "location": { "lat": 35.6892, "lng": 51.389 },
+      "address": "Tehran, Iran",
+      "description": "A nice apartment in Tehran",
+      "phone": "09121234567"
+    }
+  ]
+}
