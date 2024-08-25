@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import ErrorPage from './pages/Error';
-import RootLayout, { loader as cartLoader } from './pages/Root';
-import HomePage from './pages/Home';
-import LoginPage, { action as loginAction } from './pages/Login';
-import RegisterPage, { action as submitAction } from './pages/Register';
+import RootLayout from './pages/Root';
+import HomePage, { loader as cartLoader } from './pages/Home';
+import AdDetailPage, { loader as adDetailLoader } from './pages/AdDetails';
+import AuthPage, { action as authAction } from './pages/Auth';
+import { logoutAction, tokenLoader, checkAuthLoader } from './util/auth';
 
 function App() {
   const router = createBrowserRouter([
@@ -12,11 +13,13 @@ function App() {
       path: '/',
       errorElement: <ErrorPage />,
       element: <RootLayout />,
-      loader: cartLoader,
+      id: 'root',
+      loader: tokenLoader,
       children: [
-        { index: true, element: <HomePage /> },
-        { path: 'login', element: <LoginPage />, action: loginAction },
-        { path: 'register', element: <RegisterPage />, action: submitAction },
+        { index: true, element: <HomePage />, id: 'cards', loader: cartLoader },
+        { path: 'auth', element: <AuthPage />, action: authAction },
+        { path: 'ads/:id', element: <AdDetailPage />, loader: adDetailLoader },
+        { path: '/logout', action: logoutAction, loader: checkAuthLoader },
       ],
     },
     {

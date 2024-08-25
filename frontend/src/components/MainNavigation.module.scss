@@ -1,0 +1,45 @@
+@import '../variables.scss';
+
+.list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0;
+}
+
+.navigator {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  background-color: $color-light-nav-bg;
+  border-bottom: 1px solid $color-light-nav-border;
+  padding: 10px 0;
+
+  a {
+    color: $color-light-nav-link;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &.active {
+      color: $color-light-nav-link-hover;
+    }
+  }
+}
+
+.dark .navigator {
+  background-color: $color-dark-nav-bg;
+  border-bottom: 1px solid $color-dark-nav-border;
+
+  a {
+    color: $color-dark-nav-link;
+
+    &:hover,
+    &.active {
+      color: $color-dark-nav-link-hover;
+    }
+  }
+}

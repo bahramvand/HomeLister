@@ -1,0 +1,21 @@
+.card {
+  color: inherit;
+  background: rgba(130, 130, 130, 0.33);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 8px;
+  margin: 2rem auto;
+  width: 10rem;
+  transition: all 100ms ease-in;
+  &:hover {
+    width: 15rem;
+    padding: 16px 8px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+    p {
+      font-size: 18px;
+      margin: 16px;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+// Define color variables
+@import './variables.scss';
+
+@mixin button-styles($bg, $bg-hover) {
+  background: $bg;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px; // Rounded corners
+  padding: 10px 20px;
+  font-size: 16px; // Font size for buttons
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover,
+  &.active {
+    background: $bg-hover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Add shadow on hover
+  }
+}
+
+@mixin input-styles($bg, $border, $text-color) {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 5px; // Rounded corners
+  color: $text-color;
+  padding: 10px;
+  font-size: 16px; // Font size for inputs
+  transition: border-color 0.3s ease; // Smooth transition for focus effect
+
+  &:focus {
+    border-color: darken($border, 10%);
+    outline: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  text-align: center;
+}
+
+.light {
+  color: $color-light-text;
+  background: $color-light-background;
+
+  a {
+    color: $color-light-link;
+    &:hover,
+    &.active {
+      color: $color-light-link-hover;
+    }
+  }
+
+  button {
+    @include button-styles(
+      $color-light-button-bg,
+      $color-light-button-bg-hover
+    );
+  }
+
+  input {
+    @include input-styles(#ffffff, #cccccc, $color-light-text);
+  }
+}
+
+.dark {
+  color: $color-dark-text;
+  background: $color-dark-background;
+
+  a {
+    color: $color-dark-link;
+
+    &:hover,
+    &.active {
+      color: $color-dark-link-hover;
+    }
+  }
+
+  button {
+    @include button-styles($color-dark-button-bg, $color-dark-button-bg-hover);
+  }
+
+  input {
+    @include input-styles(#1e1e1e, #333333, $color-dark-text);
+  }
+}
