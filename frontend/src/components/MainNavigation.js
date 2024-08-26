@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Form, NavLink, useRouteLoaderData } from 'react-router-dom';
+import { NavLink, useRouteLoaderData, useSubmit } from 'react-router-dom';
 
 import classes from './MainNavigation.module.scss';
 
 export default function MainNavigation() {
   const token = useRouteLoaderData('root');
 
+  const submit = useSubmit();
   const savedTheme = localStorage.getItem('theme') || 'light';
   const [theme, setTheme] = useState(savedTheme);
 
@@ -48,9 +49,14 @@ export default function MainNavigation() {
           )}
           {token && (
             <li>
-              <Form action="/logout" method="post">
-                <button>Log out</button>
-              </Form>
+              <a
+                href="/"
+                onClick={() => {
+                  submit(null, { method: 'post', action: '/logout' });
+                }}
+              >
+                Log out
+              </a>
             </li>
           )}
           <li>

@@ -7,6 +7,8 @@ import AdDetailPage, { loader as adDetailLoader } from './pages/AdDetails';
 import AuthPage, { action as authAction } from './pages/Auth';
 import { logoutAction, tokenLoader, checkAuthLoader } from './util/auth';
 
+import AdMap from './pages/AdMap';
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -20,6 +22,7 @@ function App() {
         { path: 'auth', element: <AuthPage />, action: authAction },
         { path: 'ads/:id', element: <AdDetailPage />, loader: adDetailLoader },
         { path: '/logout', action: logoutAction, loader: checkAuthLoader },
+        { path: '/map', element: <AdMap /> },
       ],
     },
     {

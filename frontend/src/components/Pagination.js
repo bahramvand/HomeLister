@@ -25,7 +25,6 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
     pageNumbers.push('next');
   }
   const isLoading = navigation.state === 'loading';
-  console.log(isLoading);
 
   return (
     <div>

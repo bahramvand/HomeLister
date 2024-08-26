@@ -1,0 +1,126 @@
+@import '../variables.scss';
+
+.form {
+  width: 90vw;
+  max-width: 40rem;
+  height: 50vh;
+  min-height: 28rem;
+  margin: 5rem auto;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  background-color: inherit;
+  color: inherit;
+
+  h1 {
+    margin: 16px auto 32px 32px;
+    text-align: left;
+  }
+
+  ul {
+    padding: 0 32px;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    text-align: left;
+
+    label {
+      font-size: large;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    input.error {
+      border: 2px solid #e63946;
+      background-color: #ffe5e5;
+      color: #333333;
+    }
+
+    input.error:focus {
+      outline: none;
+      box-shadow: 0 0 5px 1px rgba(230, 57, 70, 0.5);
+    }
+
+    .error-message {
+      color: #e63946;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    label.error {
+      color: #cc0000a0;
+    }
+  }
+
+  .switch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    a {
+      color: inherit;
+      margin-right: 16px;
+      text-decoration: none;
+      &:hover,
+      &.active {
+        color: inherit;
+      }
+    }
+  }
+}
+
+.light {
+  @extend .form;
+  background: $color-light-background;
+  color: $color-light-text;
+
+  input {
+    @include input-styles(#ffffff, #cccccc, $color-light-text);
+  }
+
+  button {
+    @include button-styles(
+      $color-light-button-bg,
+      $color-light-button-bg-hover
+    );
+  }
+
+  a {
+    color: $color-light-link;
+
+    &:hover,
+    &.active {
+      color: $color-light-link-hover;
+    }
+  }
+}
+
+.dark {
+  @extend .form;
+  background: $color-dark-background;
+  color: $color-dark-text;
+
+  input {
+    @include input-styles(#1e1e1e, #333333, $color-dark-text);
+  }
+
+  button {
+    @include button-styles($color-dark-button-bg, $color-dark-button-bg-hover);
+  }
+
+  a {
+    color: $color-dark-link;
+
+    &:hover,
+    &.active {
+      color: $color-dark-link-hover;
+    }
+  }
+}

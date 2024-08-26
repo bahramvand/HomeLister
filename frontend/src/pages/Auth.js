@@ -9,7 +9,6 @@ export default function AuthPage() {
 export async function action({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const mode = searchParams.get('mode') || 'signup';
-  console.log(mode);
 
   if (mode !== 'signup' && mode !== 'login') {
     throw json({ message: 'Unsupported mode' }, { status: 422 });
@@ -29,7 +28,10 @@ export async function action({ request }) {
       },
     });
   } catch (err) {
-    throw json({ message: 'Cannot submit' }, { status: 500 });
+    if (err.code === 'ERR_NETWORK') {
+      throw json({ message: 'Check youre connection' }, { status: 500 });
+    }
+    return json({ message: err.response.data }, { status: err.status });
   }
 
   localStorage.setItem('token', response.data.accessToken);

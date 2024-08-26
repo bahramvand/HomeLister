@@ -20,4 +20,40 @@ $color-light-nav-border: #cccccc;
 $color-dark-nav-bg: #1e1e1e;
 $color-dark-nav-link: #e0e0e0;
 $color-dark-nav-link-hover: #82aaff;
-$color-dark-nav-border: #333333; 
+$color-dark-nav-border: #333333;
+
+@mixin input-styles($bg, $border, $text-color) {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 5px;
+  color: $text-color;
+  padding: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    @if type-of($border) == 'color' {
+      border-color: darken($border, 10%);
+    } @else {
+      border-color: $border;
+    }
+    outline: none;
+  }
+}
+
+@mixin button-styles($bg, $bg-hover) {
+  background: $bg;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover,
+  &.active {
+    background: $bg-hover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
