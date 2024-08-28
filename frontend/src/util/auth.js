@@ -4,19 +4,28 @@ export function getAuthToken() {
   return localStorage.getItem('token');
 }
 
+export function getAuthUserId() {
+  return localStorage.getItem('userId');
+}
+
 export function logoutAction() {
   localStorage.removeItem('token');
+  localStorage.removeItem('userId');
+
   return redirect('/');
 }
 
-export function tokenLoader() {
-  return getAuthToken();
+export function getAuth() {
+  return { token: getAuthToken(), userId: getAuthUserId() };
 }
 
 export function checkAuthLoader() {
   const token = getAuthToken();
+  const userId = getAuthUserId();
 
-  if(!token) {
-    return redirect('/auth')
+  if (!token || !userId) {
+    return redirect('/auth');
   }
+
+  return true;
 }

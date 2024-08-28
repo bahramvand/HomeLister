@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useRouteLoaderData, useSubmit } from 'react-router-dom';
+import { NavLink, useLoaderData, useSubmit, Link } from 'react-router-dom';
 
 import classes from './MainNavigation.module.scss';
 
 export default function MainNavigation() {
-  const token = useRouteLoaderData('root');
+  const { token } = useLoaderData();
 
   const submit = useSubmit();
   const savedTheme = localStorage.getItem('theme') || 'light';
@@ -49,14 +49,19 @@ export default function MainNavigation() {
           )}
           {token && (
             <li>
-              <a
-                href="/"
+              <Link
+                to="/"
                 onClick={() => {
                   submit(null, { method: 'post', action: '/logout' });
                 }}
               >
                 Log out
-              </a>
+              </Link>
+            </li>
+          )}
+          {token && (
+            <li>
+              <NavLink to="/ads/management/new">Add New Ads</NavLink>
             </li>
           )}
           <li>

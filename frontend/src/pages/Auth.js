@@ -35,5 +35,6 @@ export async function action({ request }) {
   }
 
   localStorage.setItem('token', response.data.accessToken);
+  localStorage.setItem('userId', response.data.user.id);
   return redirect('/');
 }

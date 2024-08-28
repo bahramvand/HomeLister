@@ -1,12 +1,19 @@
 import React from 'react';
-import axios from 'axios';
-import { Link, json, useLoaderData } from 'react-router-dom';
+import {
+  Link,
+  useLoaderData,
+  useParams,
+  useRouteLoaderData,
+} from 'react-router-dom';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import LocationMarker from '../components/LocationMarker';
 import 'leaflet/dist/leaflet.css';
 
 export default function AdDetailPage() {
   const cart = useLoaderData();
+  const id = useParams().id;
+  const { userId } = useRouteLoaderData('root');
+
   const position = cart.location
     ? [cart.location.lat, cart.location.lng]
     : null;
@@ -16,7 +23,7 @@ export default function AdDetailPage() {
       <h3>{cart.address}</h3>
       <a href={`tel:${cart.phone}`}>{cart.phone}</a>
       <p>{cart.description}</p>
-      <Link to="..">Back</Link>
+      <Link to="../..">Back</Link>
 
       {position && (
         <MapContainer
@@ -29,18 +36,10 @@ export default function AdDetailPage() {
           <LocationMarker position={position} />
         </MapContainer>
       )}
+      {cart.userId === userId && (
+        <Link to={'/ads/management/edit/' + id}>edit</Link>
+      )}
     </>
   );
 }
 
-export async function loader({ params }) {
-  let response;
-  try {
-    response = await axios.get(`http://localhost:3000/ads/${params.id}`);
-  } catch (err) {
-    const status = err.response ? err.response.status : 500;
-    throw json({ message: err.message }, { status });
-  }
-
-  return response.data;
-}

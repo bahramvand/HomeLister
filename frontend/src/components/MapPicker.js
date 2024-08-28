@@ -14,7 +14,11 @@ export default function MapPicker({ setPosition, position }) {
   return (
     <div>
       <MapContainer
-        center={[35.7219, 51.3347]}
+        center={
+          position.lat !== ''
+            ? [position.lat, position.lng]
+            : [35.688299418697746, 51.38960545677873]
+        }
         zoom={13}
         style={{ height: '50vh', width: '50vh' }}
       >
