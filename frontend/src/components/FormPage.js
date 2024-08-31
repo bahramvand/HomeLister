@@ -6,7 +6,7 @@ import {
   useNavigation,
 } from 'react-router-dom';
 
-import classes from './FormPage.module.scss';
+import classes from './Form.module.scss';
 export default function FormPage() {
   const [searchParams] = useSearchParams();
   const error = useActionData();
@@ -19,14 +19,16 @@ export default function FormPage() {
     !isSubmitting &&
     error &&
     (error.message === 'Cannot find user' ||
-      error.message === 'Email already exists') &&
-    classes.error;
+      error.message === 'Email already exists')
+      ? classes.error
+      : '';
   const passwordClasses =
     !isSubmitting &&
     error &&
     (error.message === 'Incorrect password' ||
-      error.message === 'Password is too short') &&
-    classes.error;
+      error.message === 'Password is too short')
+      ? classes.error
+      : '';
 
   return (
     <Form method="post" className={classes.form}>

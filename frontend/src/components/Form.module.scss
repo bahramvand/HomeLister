@@ -3,9 +3,7 @@
 .form {
   width: 90vw;
   max-width: 40rem;
-  height: 50vh;
-  min-height: 28rem;
-  margin: 5rem auto;
+  margin: 2rem auto;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -16,7 +14,7 @@
   color: inherit;
 
   h1 {
-    margin: 16px auto 32px 32px;
+    margin: 16px auto 4px 32px;
     text-align: left;
   }
 
@@ -65,13 +63,20 @@
     justify-content: flex-end;
 
     a {
-      color: inherit;
-      margin-right: 16px;
-      text-decoration: none;
-      &:hover,
-      &.active {
-        color: inherit;
-      }
+      margin-right: $spacing-small;
+      @include link-style;
+    }
+  }
+
+  .submit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    a {
+      margin-left: $spacing-small;
+      @include link-style;
     }
   }
 }

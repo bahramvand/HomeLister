@@ -1,18 +1,24 @@
-import { Form, json, redirect } from 'react-router-dom';
+import { Form, json, redirect, useNavigation } from 'react-router-dom';
 import axios from 'axios';
 import { getAuth } from '../util/auth';
 import { useState } from 'react';
 import MapPicker from './MapPicker';
 
+import classes from './Form.module.scss';
+
 export default function AdForm({ method, ...props }) {
+  const navigation = useNavigation();
+
   const [position, setPosition] = useState(
     props.location || { lat: '', lng: '' }
   );
 
+  const isSubmiting = navigation.state === 'submitting';
+
   return (
-    <Form method={method}>
+    <Form method={method} className={classes.form}>
+      <h1>Add new Ads</h1>
       <ul>
-        <h1>Add new Ads</h1>
         <li>
           <label htmlFor="address">Address</label>
           <input
@@ -20,6 +26,7 @@ export default function AdForm({ method, ...props }) {
             name="address"
             id="address"
             defaultValue={props.address}
+            required
           />
         </li>
         <li>
@@ -29,6 +36,7 @@ export default function AdForm({ method, ...props }) {
             name="description"
             id="description"
             defaultValue={props.description}
+            required
           />
         </li>
         <li>
@@ -38,12 +46,19 @@ export default function AdForm({ method, ...props }) {
             name="phone"
             id="phone"
             defaultValue={props.phone}
+            required
           />
         </li>
-        <MapPicker setPosition={setPosition} position={position} />
-        <input type="hidden" name="lat" value={position.lat} />
-        <input type="hidden" name="lng" value={position.lng} />
-        <button type="submit">Submit</button>
+        <li>
+          <MapPicker setPosition={setPosition} position={position} />
+          <input type="hidden" name="lat" value={position.lat} />
+          <input type="hidden" name="lng" value={position.lng} />
+        </li>
+        <li className={classes.submit}>
+          <button type="submit" disabled={isSubmiting}>
+            {isSubmiting ? 'Submiting...' : 'Submit'}
+          </button>
+        </li>
       </ul>
     </Form>
   );

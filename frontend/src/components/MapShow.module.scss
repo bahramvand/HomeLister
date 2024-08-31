@@ -1,0 +1,83 @@
+.ad-detail {
+  width: 90vw;
+  max-width: 55rem;
+  margin: 16px auto;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.4px);
+  -webkit-backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  .map-address {
+    margin-bottom: 8px;
+  }
+
+  .map-container {
+    position: relative;
+    margin: 24px auto;
+    height: 516px;
+    width: 516px;
+
+    .map-background {
+      padding: 8px;
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.09);
+      .map {
+        box-sizing: unset;
+        height: 500px;
+        width: 500px;
+        overflow: hidden;
+      }
+    }
+    .edit {
+      padding: 0;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      bottom: 9px;
+      right: 9px;
+      z-index: 1000;
+      width: 80px;
+      height: 40px;
+      img {
+        width: 24px;
+        height: 24px;
+        margin-left: 6px;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    margin: 64px auto;
+    .map-container {
+      height: 316px;
+      width: 316px;
+
+      .map-background {
+        height: 316px;
+        width: 316px;
+        .map {
+          width: 300px;
+          height: 300px;
+        }
+      }
+      .edit {
+        padding: 0;
+        bottom: 6px;
+        right: 6px;
+        width: 80px;
+        height: 40px;
+        img {
+          width: 24px;
+          height: 24px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+  .back {
+    margin-bottom: 32px;
+  }
+}

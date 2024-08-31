@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import AdList from '../components/AdList';
 import axios from 'axios';
+import Loading from '../util/Loading';
 
 export default function Home() {
   const { carts } = useLoaderData();
@@ -24,8 +25,8 @@ export default function Home() {
   return (
     <>
       <h1>Ad Listings</h1>
-      {isLoading && <p>Loading...</p>}
-      <Suspense fallback={<p>Loading...</p>}>
+      {isLoading && <Loading />}
+      <Suspense fallback={<Loading />}>
         <Await resolve={carts}>
           {(loadedCart) => (
             <AdList

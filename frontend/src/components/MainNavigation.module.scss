@@ -9,7 +9,6 @@
 }
 
 .navigator {
-  width: 100vw;
   display: flex;
   justify-content: space-around;
   background-color: $color-light-nav-bg;
@@ -42,4 +41,17 @@
       color: $color-dark-nav-link-hover;
     }
   }
+}
+
+.switch-theme-btn {
+  display: flex;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.switch-theme-dark-btn {
+  box-sizing: unset;
+  border-radius: 8px;
+  margin: 5px 2px;
+  padding: 5px 13px;
 }

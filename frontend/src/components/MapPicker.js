@@ -20,7 +20,7 @@ export default function MapPicker({ setPosition, position }) {
             : [35.688299418697746, 51.38960545677873]
         }
         zoom={13}
-        style={{ height: '50vh', width: '50vh' }}
+        style={{ height: '100%', aspectRatio: 1 / 1 }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
